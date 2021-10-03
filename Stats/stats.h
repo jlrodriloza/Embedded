@@ -29,5 +29,5 @@ unsigned int find_median(unsigned char* arr, unsigned int arr_size);
 
 unsigned int find_mean(unsigned char* arr, unsigned int arr_size);
 
-
+void print_statistics(unsigned char* arr, unsigned int arr_size);
 

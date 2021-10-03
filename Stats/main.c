@@ -4,7 +4,7 @@
 int main()
 {
     unsigned int N = 6;
-    unsigned char* arr = new unsigned char[N];
+    unsigned char arr[N];
     arr[0] = 0;
     arr[1] = 2;
     arr[2] = 1;
@@ -19,15 +19,7 @@ int main()
 	
     print_array(arr, N);
 
-    unsigned int min = find_minimum(arr, N);
-    unsigned int max = find_maximum(arr, N);
-    unsigned int median = find_median(arr, N);
-    unsigned int mean = find_mean(arr, N);
-
-    printf("Max is %u \n", max);
-    printf("Min is %u \n", min);
-    printf("Median is %u \n", median);
-    printf("Mean is %u \n", mean);
+    print_statistics(arr, N);
 
 	return 0;
 }

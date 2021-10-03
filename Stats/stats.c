@@ -103,3 +103,17 @@ unsigned int find_mean(unsigned char* arr, unsigned int arr_size)
 	
 	return mean / arr_size;
 }
+
+void print_statistics(unsigned char* arr, unsigned int arr_size){
+
+	unsigned int min = find_minimum(arr, arr_size);
+    unsigned int max = find_maximum(arr, arr_size);
+    unsigned int median = find_median(arr, arr_size);
+    unsigned int mean = find_mean(arr, arr_size);
+
+    printf("Max is %u \n", max);
+    printf("Min is %u \n", min);
+    printf("Median is %u \n", median);
+    printf("Mean is %u \n", mean);
+
+}
