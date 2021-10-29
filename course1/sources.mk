@@ -10,22 +10,22 @@
 #*****************************************************************************
 
 # Add your Source files to this variable
-COMMON_SOURCES = memory.c \
-	  main.c
+COMMON_SOURCES = src/memory.c \
+	  src/main.c
 
-MSP432_SOURCES = 	startup_msp432p401r_gcc.c \
-					system_msp432p401r.c \
-					interrupts_msp432p401r_gcc.c
+MSP432_SOURCES = 	src/startup_msp432p401r_gcc.c \
+					src/system_msp432p401r.c \
+					src/interrupts_msp432p401r_gcc.c
 
 # Add your include paths to this variable
-COMMON_INCLUDES = 	../include/common/memory.h \
-					../include/common/platform.h
+COMMON_INCLUDES = 	include/common/memory.h \
+					include/common/platform.h
 
-MSP432_INCLUDES = 	../include/CMSIS/cmsis_gcc.h \
-					../include/CMSIS/core_cm4.h \
-					../include/CMSIS/core_cmFunc.h \
-					../include/CMSIS/core_cmInstr.h \
-					../include/CMSIS/core_cmSimd.h \
-					../include/msp432/msp432p401r.h \
-					../include/msp432/msp_compatibility.h \
-					../include/msp432/system_msp432p401r.h
+MSP432_INCLUDES = 	include/CMSIS/cmsis_gcc.h \
+					include/CMSIS/core_cm4.h \
+					include/CMSIS/core_cmFunc.h \
+					include/CMSIS/core_cmInstr.h \
+					include/CMSIS/core_cmSimd.h \
+					include/msp432/msp432p401r.h \
+					include/msp432/msp_compatibility.h \
+					include/msp432/system_msp432p401r.h

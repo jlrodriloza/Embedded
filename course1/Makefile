@@ -23,11 +23,8 @@
 #------------------------------------------------------------------------------
 include sources.mk
 
-# Platform Overrides
-#PLATFORM = HOST
-
 # Architectures Specific Flags
-LINKER_FILE = ../msp432p401r.lds
+LINKER_FILE = msp432p401r.lds
 CPU = cortex-m4
 ARCH = armv7e-m
 SPECS = nosys.specs
@@ -35,7 +32,7 @@ SPECS = nosys.specs
 # Compiler Flags and Defines
 
 TARGET = c1m2
-CFLAGS = -Werror -g -O0 -std=c99 -I ../include/common/ -I ../include/CMSIS -I ../include/msp432
+CFLAGS = -Werror -g -O0 -std=c99 -I include/common/ -I include/CMSIS -I include/msp432
 
 #only for ARM
 ARMCPPFLAGS = -mcpu=$(CPU) -march=$(ARCH) --specs=$(SPECS) -Wall -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16
@@ -75,6 +72,7 @@ PREPS = $(SRCS:.c=.i)
 
 ASMS =  $(SRCS:.c=.asm)
 
+
 %.i : %.c
 	$(CC) -E $< $(CPPFLAGS) $(CFLAGS) -o $@
 	
@@ -84,7 +82,7 @@ ASMS =  $(SRCS:.c=.asm)
 %.asm : %.c
 	$(CC) -S $< $(CPPFLAGS) $(CFLAGS) -o $@
 	
-$(TARGET).dump: $(TARGET).out
+$(TARGET).dump:  $(TARGET).out
 	$(DUMP) --disassemble $(TARGET).out > $(TARGET).dump
 
 $(TARGET).o: $(OBJS)
@@ -100,5 +98,5 @@ compile-all: $(TARGET).o
 build: $(TARGET).out
 
 .PHONY: clean
-clean:
+clean:	
 	rm -f $(PREPS) $(OBJS) $(ASMS) $(TARGET).out $(TARGET).map
