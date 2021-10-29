@@ -1,5 +1,5 @@
 #include "stats.h"
-#include "stdio.h"
+#include "platform.h"
 
 // sorts the element given in the position "index_to_attack" in the array "arr" of size "arr_size"
 char sort_array_one_number(unsigned char* arr, unsigned int arr_size, unsigned int index_to_attack)
@@ -47,10 +47,14 @@ void sort_array(unsigned char* arr, unsigned int arr_size)
 
 void print_array(unsigned char* arr, unsigned int arr_size)
 {
+#ifndef VERBOSE
+	return;
+#endif
+
 	for (unsigned int i = 0; i < arr_size; ++i)
 	{
-		printf("%u", arr[i]);
-		printf("\n");
+		PRINTF("%u", arr[i]);
+		PRINTF("\n");
 	}
 }
 
