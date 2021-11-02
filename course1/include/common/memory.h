@@ -90,4 +90,91 @@ void set_all(char * ptr, char value, unsigned int size);
  */
 void clear_all(char * ptr, unsigned int size);
 
+/**
+ * @brief Takes two byte pointers (source and destination) and a length of 
+ * bytes to move from the source to the destination, handling possible 
+ * overlap of source and destination.
+ * Returns a pointer to destination.
+ *
+ * @ param src Pointer to source to be copied
+ * @ param dst Pointer to destination where data is to be copied
+ *
+ * @ return Pointer that will coincide with dst if no overlap occurred. 
+ * Otherwise, a new pointer consecutive to the end of src will be returned.
+ */
+uint8_t * my_memmove(uint8_t * src, uint8_t * dst, size_t length);
+
+/**
+ * @ brief Takes two byte pointers (source and destination) and a length 
+ * of bytes to copy from source to destination. No overlapping handling
+ * will be made, so data may be corrupted if there is overlap.
+ *
+ * Returns a pointer to destination.
+ *
+ * @ param src Pointer to source to be copied
+ * @ param dst Pointer to destination where data is to be copied
+ *
+ * @ return Pointer that will coincide with dst. 
+ */
+uint8_t * my_memcopy(uint8_t * src, uint8_t * dst, size_t length);
+
+
+/**
+ * @ brief Takes a byte pointer to a source and a length 
+ * of bytes and sets all locations to a given value.
+ *
+ * Returns a pointer to the source.
+ *
+ * @ param src Pointer to source.
+ *
+ * @ return Pointer that will coincide with src. 
+ */
+uint8_t * my_memset(uint8_t * src, size_t length, uint8_t value);
+
+/**
+ * @ brief Takes a byte pointer to a source and a length 
+ * of bytes and sets all locations to a 0.
+ *
+ * Returns a pointer to the source.
+ *
+ * @ param src Pointer to source.
+ *
+ * @ return Pointer that will coincide with src. 
+ */
+uint8_t * my_memzero(uint8_t * src, size_t length);
+
+
+/**
+ * @ brief Takes a byte pointer to a source and a length 
+ * of bytes and reverses the order of all the bytes.
+ *
+ * Returns a pointer to the source.
+ *
+ * @ param src Pointer to source.
+ *
+ * @ return Pointer that will coincide with src. 
+ */
+uint8_t * my_reverse(uint8_t * src, size_t length);
+
+/**
+ * @ brief Takes a number of words to allocate in dynamic 
+ * memory
+ *
+ * Returns a pointer to the memory if successful or a null pointer if not.
+ *
+ * @ param length number of words.
+ *
+ * @ return Pointer to the memory allocated. 
+ */
+int32_t * reserve_words(size_t length);
+
+/**
+ * @ brief Frees dynamic memory allocation, given a certain pointer
+ *
+ * @ param src memory to be freed.
+ *
+ * @ return void
+ */
+void free_words(int32_t * src);
+
 #endif /* __MEMORY_H__ */
