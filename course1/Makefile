@@ -32,7 +32,8 @@ SPECS = nosys.specs
 # Compiler Flags and Defines
 
 TARGET = c1m2
-CFLAGS = -Werror -g -O0 -std=c99 -I include/common/ -I include/CMSIS -I include/msp432
+#CFLAGS = -Werror -g -O0 -std=c99 -I include/common/ -I include/CMSIS -I include/msp432
+# removed from here to be conditional to PLATFORM
 
 #only for ARM
 ARMCPPFLAGS = -mcpu=$(CPU) -march=$(ARCH) --specs=$(SPECS) -Wall -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16
@@ -50,6 +51,8 @@ ifeq ($(PLATFORM),HOST)
 	# left empty for HOST (not preprocessor flags needed)
 	CPPFLAGS = -D$(PLATFORM)
 	
+	CFLAGS = -Werror -g -O0 -std=c99 -I include/common/
+	
 else ifeq ($(PLATFORM),MSP432)
 	
 	CC = arm-none-eabi-gcc
@@ -60,10 +63,13 @@ else ifeq ($(PLATFORM),MSP432)
 	LDFLAGS = -Wl,-Map=$(TARGET).map -T $(LINKER_FILE)
 	CPPFLAGS = -D$(PLATFORM) $(ARMCPPFLAGS)
 
+	CFLAGS = -Werror -g -O0 -std=c99 -I include/common/ -I include/CMSIS -I include/msp432
+
 else
 	$(error "Unsupported PLATFORM" $(PLATFORM))
 	
 endif
+
 
 
 OBJS = $(SRCS:.c=.o)
