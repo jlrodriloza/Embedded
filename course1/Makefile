@@ -31,7 +31,7 @@ SPECS = nosys.specs
 
 # Compiler Flags and Defines
 
-TARGET = c1m2
+TARGET = jose
 #CFLAGS = -Werror -g -O0 -std=c99 -I include/common/ -I include/CMSIS -I include/msp432
 # removed from here to be conditional to PLATFORM
 
@@ -49,7 +49,7 @@ ifeq ($(PLATFORM),HOST)
 	LDFLAGS = -Wl,-Map=$(TARGET).map
 	
 	# left empty for HOST (not preprocessor flags needed)
-	CPPFLAGS = -D$(PLATFORM)
+	CPPFLAGS = -D$(PLATFORM) -DCOURSE1
 	
 	CFLAGS = -Werror -g -O0 -std=c99 -I include/common/
 	
@@ -61,7 +61,7 @@ else ifeq ($(PLATFORM),MSP432)
 	SRCS = $(COMMON_SOURCES) $(MSP432_SOURCES)
 	INCLUDES = $(COMMON_INCLUDES) $(MSP432_INCLUDES)
 	LDFLAGS = -Wl,-Map=$(TARGET).map -T $(LINKER_FILE)
-	CPPFLAGS = -D$(PLATFORM) $(ARMCPPFLAGS)
+	CPPFLAGS = -D$(PLATFORM) -DCOURSE1 $(ARMCPPFLAGS)
 
 	CFLAGS = -Werror -g -O0 -std=c99 -I include/common/ -I include/CMSIS -I include/msp432
 

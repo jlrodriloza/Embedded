@@ -12,7 +12,9 @@
 # Add your Source files to this variable
 COMMON_SOURCES = src/memory.c \
 	  src/main.c \
-	  src/data.c
+	  src/data.c \
+	  src/stats.c \
+	  src/course1.c
 
 MSP432_SOURCES = 	src/startup_msp432p401r_gcc.c \
 					src/system_msp432p401r.c \
@@ -21,7 +23,9 @@ MSP432_SOURCES = 	src/startup_msp432p401r_gcc.c \
 # Add your include paths to this variable
 COMMON_INCLUDES = 	include/common/memory.h \
 					include/common/platform.h \
-					include/common/data.h
+					include/common/data.h \
+					include/common/stats.h \
+					include/common/course1.h
 
 MSP432_INCLUDES = 	include/CMSIS/cmsis_gcc.h \
 					include/CMSIS/core_cm4.h \
